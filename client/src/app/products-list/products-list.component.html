@@ -1,0 +1,35 @@
+<div class="container">
+    <h2>Products</h2>
+    <p>The below table shows list of Products, you modify them</p>  
+    <div class="table table-striped" *ngIf='(products | async)?.length > 0;'>
+        <div class="row col-md-6">
+            <table class="table table-striped" >
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor='let prd of products | async'>
+                    <td>{{prd.name}}</td>
+                    <td>{{prd.price}}</td>
+                    <td>{{prd.quantity}}</td>
+                   <td>
+                    <button type="button" class="btn btn-default btn-sm" (click)="getProductById(prd.id)">
+                        <span class="glyphicon glyphicon-info-sign"></span> Details
+                      </button>
+                    <button type="button" class="btn btn-default btn-sm" (click)="updateProduct(prd.id, prd)">
+                        <span class="glyphicon glyphicon-edit"></span> Edit
+                      </button>
+                      <button type="button" class="btn btn-default btn-sm" (click)="deleteProduct(prd.id)">
+                        <span class="glyphicon glyphicon-remove"></span> Remove 
+                      </button>
+                   </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>          
+  </div>
